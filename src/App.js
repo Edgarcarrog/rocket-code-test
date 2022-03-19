@@ -1,10 +1,13 @@
-import logo from "./logo.svg";
-import "./App.css";
+import BirthdayForm from "./components/BirthdayForm";
+import ContactForm from "./components/ContactForm";
+import NameForm from "./components/NameForm";
 
 function App() {
   return (
     <div className="App">
-      <h1>Rocket Code Test</h1>
+      <NameForm />
+      <BirthdayForm />
+      <ContactForm />
     </div>
   );
 }
