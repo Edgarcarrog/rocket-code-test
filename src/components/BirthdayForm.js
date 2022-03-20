@@ -1,46 +1,60 @@
-import { useState } from "react";
+import { context } from "../context/context";
+import { useState, useContext } from "react";
 
 const BirthdayForm = (props) => {
+  const { globalState, setGlobalState } = useContext(context);
+
   const [userData, setUserData] = useState({
     dia: "",
     mes: "",
     año: "",
   });
 
-  const [charging, setCharging] = useState(false);
+  const [displayData, setDisplayData] = useState(false);
 
   const handleChange = (e) => {
     setUserData({ ...userData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    if (!userData.email.trim() || !userData.password.trim()) {
-    }
-    try {
-      setCharging(true);
-    } catch (error) {
-      console.log(error.response);
-      setCharging(false);
+  const handleKeyPress = async (e) => {
+    if (
+      e.key === "Enter" &&
+      userData.dia.trim() &&
+      userData.mes.trim() &&
+      userData.año.trim()
+    ) {
+      const { dia, mes, año } = userData;
+      setDisplayData(true);
+      setGlobalState({
+        ...globalState,
+        birthday: `${dia} ${mes} ${año}`,
+        isBirthdayCompleted: true,
+      });
     }
   };
 
   return (
-    <div className="container form">
-      <div className="row justify-content-center">
-        <div className="col-11 col-md-6 col-xl-4 box mx-2">
+    <div className="row d-flex justify-content-center m-1">
+      <div className="col-2 col-md-3 col-xl-4">
+        <p className="paragraph my-3">Pic</p>
+      </div>
+      <div className="col-10 col-md-6 col-xl-4 p-0">
+        <div className="bg-gray-light br-box my-2 p-2">
           <p className="paragraph mx-0 my-3">
             ¿Cuál es tu fecha de nacimiento?
           </p>
           <form>
             <div className="mb-3">
               <input
-                type="text"
+                type="number"
                 className="form-control"
                 id="dia"
                 name="dia"
                 autoFocus
                 placeholder="Día"
+                min="1"
+                max="31"
+                step="1"
                 onChange={handleChange}
               ></input>
             </div>
@@ -56,16 +70,27 @@ const BirthdayForm = (props) => {
             </div>
             <div className="mb-3">
               <input
-                type="text"
+                type="number"
                 className="form-control"
                 id="año"
                 name="año"
                 placeholder="Año"
+                min="1"
+                max="2030"
+                step="1"
                 onChange={handleChange}
+                onKeyPress={handleKeyPress}
               ></input>
             </div>
           </form>
         </div>
+        {displayData && (
+          <div className="bg-pink br-box my-2 p-2">
+            <p className="m-0">
+              {userData.dia} {userData.mes} {userData.año}
+            </p>
+          </div>
+        )}
       </div>
     </div>
   );
