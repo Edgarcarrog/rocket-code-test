@@ -6,7 +6,7 @@ const Provider = ({ children }) => {
   const [globalState, setGlobalState] = useState({
     name: "",
     birthday: "",
-    email: "",
+    mail: "",
     phone: "",
     isNameCompleted: false,
     isBirthdayCompleted: false,

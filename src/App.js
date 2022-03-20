@@ -3,6 +3,7 @@ import { useContext } from "react";
 import BirthdayForm from "./components/BirthdayForm";
 import ContactForm from "./components/ContactForm";
 import NameForm from "./components/NameForm";
+import SubmitForm from "./components/SubmitForm";
 
 function App() {
   const {
@@ -15,6 +16,7 @@ function App() {
         <NameForm />
         {isNameCompleted && <BirthdayForm />}
         {isBirthdayCompleted && <ContactForm />}
+        {isContactCompleted && <SubmitForm />}
       </div>
     </div>
   );

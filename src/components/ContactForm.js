@@ -2,9 +2,8 @@ import { context } from "../context/context";
 import { useState, useContext } from "react";
 
 const ContactForm = (props) => {
-
   const { globalState, setGlobalState } = useContext(context);
-  
+
   const [userData, setUserData] = useState({
     mail: "",
     telefono: "",
@@ -18,13 +17,20 @@ const ContactForm = (props) => {
 
   const handleKeyPress = async (e) => {
     if (e.key === "Enter" && userData.mail.trim() && userData.telefono.trim()) {
+      const { mail, telefono } = userData;
       setDisplayData(true);
+      setGlobalState({
+        ...globalState,
+        mail: mail,
+        phone: telefono,
+        isContactCompleted: true,
+      });
     }
   };
 
   return (
     <div className="row d-flex justify-content-center m-1">
-      <div className="col-2 col-md-3 col-xl-4">
+      <div className="col-2">
         <p className="paragraph my-3">Pic</p>
       </div>
       <div className="col-10 col-md-6 col-xl-4 p-0">

@@ -37,7 +37,7 @@ const NameForm = (props) => {
 
   return (
     <div className="row d-flex justify-content-center m-1">
-      <div className="col-2 col-md-3 col-xl-4">
+      <div className="col-2">
         <p className="paragraph my-3">Pic</p>
       </div>
       <div className="col-10 col-md-6 col-xl-4 p-0">
