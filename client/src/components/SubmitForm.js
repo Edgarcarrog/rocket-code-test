@@ -36,7 +36,8 @@ const SubmitForm = () => {
 
   return (
     <Fragment>
-      <div className="row d-flex justify-content-end m-1">
+      <div className="row d-flex justify-content-center m-1">
+        <div className="col-2"></div>
         <div className="col-10 col-md-6 col-xl-4 p-0">
           <div className="bg-gray-light br-box my-2 p-2">
             <p className="mx-0 my-3">
@@ -58,7 +59,8 @@ const SubmitForm = () => {
           </div>
         </div>
       </div>
-      <div className="row d-flex justify-content-end m-1">
+      <div className="row d-flex justify-content-center m-1">
+        <div className="col-2"></div>
         <div className="col-12 col-md-6 col-xl-4 p-0">
           {displayData && (
             <div className="bg-pink br-box my-2 p-2">
