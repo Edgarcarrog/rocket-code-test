@@ -5,6 +5,9 @@ export const context = createContext();
 const Provider = ({ children }) => {
   const [globalState, setGlobalState] = useState({
     name: "",
+    secondname: "",
+    firstlastname: "",
+    secondlastname: "",
     birthday: "",
     mail: "",
     phone: "",

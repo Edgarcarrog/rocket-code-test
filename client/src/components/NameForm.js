@@ -1,7 +1,7 @@
 import { context } from "../context/context";
 import { useState, useContext } from "react";
 
-const NameForm = (props) => {
+const NameForm = () => {
   const { globalState, setGlobalState } = useContext(context);
 
   const [userData, setUserData] = useState({
@@ -29,7 +29,10 @@ const NameForm = (props) => {
       setDisplayData(true);
       setGlobalState({
         ...globalState,
-        name: `${nombre} ${segundoNombre} ${apellidoPaterno} ${apellidoMaterno}`,
+        name: nombre,
+        secondname: segundoNombre,
+        firstlastname: apellidoPaterno,
+        secondlastname: apellidoMaterno,
         isNameCompleted: true,
       });
     }
